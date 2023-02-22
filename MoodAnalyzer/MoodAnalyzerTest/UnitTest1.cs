@@ -6,32 +6,16 @@ namespace MoodAnalyzerTest
     [TestClass]
     public class UnitTest1
     {
-        //UC1
-        //Display Sad message
-        //TC 1.1
+        //UC2
+        // TC 2.1: Given null mood Should Return HAPPY
         [TestMethod]
-        public void GivenSadMoodMessage_WhenAnalyse_ShouldReturnSAD()
+        public void GivenNullMoodShouldReturnHAPPY()
         {
-
-            string message = "I am sad mood";
-            string expectedValue = "SAD";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer();
-
-            string result = moodAnalyser.AnalyseMood(message);
-
-            Assert.AreEqual(expectedValue, result);
-        }
-        //Display Happy message
-        //TC 1.2
-        [TestMethod]
-        public void GivenSadMoodMessage_WhenAnalyse_ShouldReturnHAPPY()
-        {
-
-            string message = "I am happy mood";
-            string expectedValue = "HAPPY";
-            MoodAnalyzer moodAnalyser = new MoodAnalyzer();
-            string result = moodAnalyser.AnalyseMood(message);
-            Assert.AreEqual(expectedValue, result);
+            string expected = "HAPPY";
+            string message = null;
+            MoodAnalyzer moodAnalyse = new MoodAnalyzer(message);
+            string mood = moodAnalyse.AnalyzeMood();
+            Assert.AreEqual(expected, mood);
         }
     }
 }
