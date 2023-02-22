@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace MoodAnalyzerP
 {
-    public class MoodAnalyzer
+    public class MoodAnalyser
     {
         public string message;
-        public MoodAnalyzer()
+        public MoodAnalyser()
         {
         }
-        public MoodAnalyzer(string message)
+        public MoodAnalyser(string message)
         {
             this.message = message;
         }
         public string AnalyseMood()
         {
+            if (message == string.Empty)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY_MOOD, "Message is Empty");
+            }
             try
             {
-                if (string.IsNullOrEmpty(message))
-                {
-                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.EMPTY_MOOD, "Message is Empty");
-                }
                 if (message.Contains("Sad"))
                 {
                     return "SAD";
@@ -35,8 +35,10 @@ namespace MoodAnalyzerP
             }
             catch (MoodAnalyserException)
             {
-                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Message is ull");
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MOOD, "Message is Null");
             }
         }
+
+
     }
 }
